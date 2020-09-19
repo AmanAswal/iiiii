@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">   <!--don't mention public folder-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <%- include('partials/nav'); -%>
+
+    <form id="myForm">
+        <input type="text" name="item" placeholder="Add item" autofocus autocomplete="off">
+        <button type="submit" class="waves-effect waves-light btn">+</button>
+    </form>
+    
+    <ul>
+        <% wish.forEach(item =>{ %>
+            <li class="item" onclick="deleteMe(this)"> 
+                <%= item %>
+                
+            </li>
+        <% }) %>
+
+    </ul>
+
+    <script src="/script.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+               
+</body>
+</html>
+

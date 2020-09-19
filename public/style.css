@@ -1,0 +1,31 @@
+body{
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.item{
+    font-size: 30px;
+    cursor: -webkit-grab;
+    width: 15em;
+    margin: auto;
+}
+
+#myForm{
+    width: 20em;
+    text-align: center;
+    margin: auto;
+    padding-top: 5em;
+    padding-bottom: 20px;
+}
+
+.date{
+    padding-left: 20px;
+    font-size: 2em;
+}
+
+
+.currentTime{
+    padding-right: 20px;
+    font-size: 2em;
+}
