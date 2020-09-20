@@ -20,17 +20,19 @@
     })
 }
 
+    // function to delete item
     function deleteMe(item){
         fetch("http://localhost:3000/remove/" + item.innerText,{
             method: "delete"
         }).then(res=>res.json())
         .then(res2 => {
-            console.log(res2)
+            // console.log(res2)
             location.reload()
         });
     }
 
 
+    // function to show time dynamically
     function checkTime(i) {
         if (i < 10) {
           i = "0" + i;

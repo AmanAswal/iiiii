@@ -1,5 +1,14 @@
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const {mongourl} = require('./config/keys');
+const Wish = require('./models/wish');
+
 
 var data = ['Code', 'Sleep', 'Eat'];
+
+// connecting mongodb
+mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // recieving (app) because it is passed from app.js
 module.exports = (app) => {
@@ -8,15 +17,21 @@ module.exports = (app) => {
         res.render('home', {wish: data});
     })
 
-    app.get('/about', (req, res)=>{
-        res.render('about');
-    })
-
     // post route
     app.post('/sent', (req,res)=>{
-        console.log(req.body.item);
-        data.push(req.body.item);   // adding item to array data
-        res.send(data); // send the updated array data
+        const Item = new Wish({
+            wish: req.body.item
+        });
+
+        Item.save().then(data=>{
+            console.log("saved");
+        }).catch(err=>{
+            throw err;
+        })
+
+        // console.log(req.body.item);
+        // data.push(req.body.item);   // adding item to array data
+        // res.send(data); // send the updated array data
     })
 
     // delete route
