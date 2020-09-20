@@ -4,17 +4,16 @@ const mongoose = require('mongoose');
 const {mongourl} = require('./config/keys');
 const Wish = require('./models/wish');
 
-
-var data = ['Code', 'Sleep', 'Eat'];
-
-// connecting mongodb
+// connecting mongodb with mongoose
 mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // recieving (app) because it is passed from app.js
 module.exports = (app) => {
     // get routes
     app.get('/', (req, res)=>{
-        res.render('home', {wish: data});
+        Wish.find({}).then(data=>{
+            res.render('home', {wish: data});
+        })
     })
 
     // post route
@@ -24,6 +23,7 @@ module.exports = (app) => {
         });
 
         Item.save().then(data=>{
+            res.send(data);
             console.log("saved");
         }).catch(err=>{
             throw err;
@@ -36,12 +36,16 @@ module.exports = (app) => {
 
     // delete route
     app.delete('/remove/:id', (req,res)=>{
-        data = data.map(item=>{
-                if(item != req.params.id){
-                    return item;
-                }
+        Wish.findOneAndRemove({wish: req.params.id}).then(data=>{
+            console.log("Successfully deleted");
+            res.send(data);
         })
-        res.send(data);
+        // data = data.map(item=>{
+        //         if(item != req.params.id){
+        //             return item;
+        //         }
+        // })
+        
     })
 
 }
