@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const {mongourl} = require('./config/keys');
-const Wish = require('./models/wish');
+// const Wish = require('./models/wish');
+
+const Wish = mongoose.model('wishes');
 
 // connecting mongodb with mongoose
 mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true});

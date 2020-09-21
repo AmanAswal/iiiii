@@ -5,4 +5,4 @@ const WishSchema = Schema({
     wish: String,
 });
 
-module.exports = mongoose.model('wishes', WishSchema);
+mongoose.model('wishes', WishSchema);

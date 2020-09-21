@@ -11,6 +11,10 @@ body{
     margin: auto;
 }
 
+.item:hover{
+    text-decoration: line-through;
+}
+
 #myForm{
     width: 20em;
     text-align: center;

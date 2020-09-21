@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // middleware - app.use is used for middleware
 app.use(express.static('public')); // serving static files in public folder
+
+// import model
+require('./models/wish');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
