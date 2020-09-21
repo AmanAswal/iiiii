@@ -1,7 +1,7 @@
  // post script
  document.getElementById("myForm").onsubmit =(e)=>{
     e.preventDefault();
-    const url = "http://localhost:3000/sent";
+    const url = "/sent";
 
     var data = new URLSearchParams();
     //  console.log(e.target)
@@ -22,7 +22,7 @@
 
     // function to delete item
     function deleteMe(item){
-        fetch("http://localhost:3000/remove/" + item.innerText,{
+        fetch("/remove/" + item.innerText,{
             method: "delete"
         }).then(res=>res.json())
         .then(res2 => {
