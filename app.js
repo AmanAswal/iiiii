@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 // middleware - app.use is used for middleware
 app.use(express.static('public')); // serving static files in public folder
 
-// import model
+// import mongoose model
 require('./models/wish');
 
 // parse application/x-www-form-urlencoded
