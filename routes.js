@@ -12,9 +12,11 @@ mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true});
 // recieving (app) because it is passed from app.js
 module.exports = (app) => {
     // get routes
-    app.get('/', (req, res)=>{
+    app.get('/data', (req, res)=>{
         Wish.find({}).then(data=>{
-            res.render('home', {wish: data});
+            res.send(data);
+            // res.render('home', {wish: data});
+
         })
     })
 
@@ -38,7 +40,7 @@ module.exports = (app) => {
 
     // delete route
     app.delete('/remove/:id', (req,res)=>{
-        Wish.findOneAndRemove({wish: req.params.id}).then(data=>{
+        Wish.findOneAndRemove({_id: req.params.id}).then(data=>{
             console.log("Successfully deleted");
             res.send(data);
         })
